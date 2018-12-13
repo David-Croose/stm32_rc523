@@ -2,9 +2,6 @@
 #include "port.h"
 #include <string.h>
 
-#define SetCsHigh()  GPIO_WriteBit(GPIOB, GPIO_Pin_2,SET);
-#define SetCsLow()   GPIO_WriteBit(GPIOB, GPIO_Pin_2,RESET);
-
 static uint8_t ReadReg(uint8_t addr);
 static void WriteReg(uint8_t addr,uint8_t v);
 static void ClearBitMask(uint8_t addr,uint8_t v);
@@ -26,7 +23,7 @@ void RC523Init(void)
   /// SpiInit();
   
   RC_PcdReset();
-  RC_PcdISOType(RC_ISO14443_A);
+  RC_PcdISOType(RC_ISO14443_B);
   /*RCRequestTypeB();
   RCATTRIBTypeB();
   RCGetUIDTypeB(regbuff);*/

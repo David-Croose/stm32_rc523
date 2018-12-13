@@ -49,5 +49,12 @@ static uint8_t rc523_readwrite_byte(uint8_t byte)
 
 #define GPIO_WriteBit(x)        rc523_reset((x))
 
+typedef unsigned char u8;
+typedef unsigned short u16;
+typedef unsigned int u32;
+typedef char s8;
+typedef short s16;
+typedef int s32;
+
 
 #endif
