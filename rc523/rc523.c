@@ -32,16 +32,16 @@ void RC523Init(void)
   //WriteReg(CommandReg,0x10);
   while(1)
   {
-    RCPcdRequest(PICC_REQALL,idtest);
-    //test = ADC_GetConversionValue(ADC1);
-    for(int i = 0 ; i < 1000 ; i ++);
-    ReadCardId(idtest);
+    /// RCPcdRequest(PICC_REQALL,idtest);
+    /// //test = ADC_GetConversionValue(ADC1);
+    /// for(int i = 0 ; i < 1000 ; i ++);
+    /// ReadCardId(idtest);
     
     for(int i = 0 ; i < 1000 ; i ++);
-    //RCRequestTypeB();
-    //RCATTRIBTypeB();
-   // RCGetUIDTypeB(regbuff);
-    //for(int i = 0 ; i < 16000 ; i ++);
+    RCRequestTypeB();
+    RCATTRIBTypeB();
+    RCGetUIDTypeB(regbuff);
+    for(int i = 0 ; i < 16000 ; i ++);
   }
 }
 
