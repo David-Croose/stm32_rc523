@@ -62,7 +62,17 @@ void SystemClock_Config(void);
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
+void RC523Init(void);
 
+char buzzer_flag;
+
+void HAL_SYSTICK_Callback()
+{
+	if(buzzer_flag)
+    {
+		HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_8);		// buzzer pin
+	}
+}
 /* USER CODE END 0 */
 
 /**
@@ -105,7 +115,7 @@ int main(void)
   {
 
   /* USER CODE END WHILE */
-      RC523Init();
+	RC523Init();
   /* USER CODE BEGIN 3 */
 
   }

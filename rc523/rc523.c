@@ -2,6 +2,8 @@
 #include "port.h"
 #include <string.h>
 
+extern char buzzer_flag;
+
 static uint8_t ReadReg(uint8_t addr);
 static void WriteReg(uint8_t addr,uint8_t v);
 static void ClearBitMask(uint8_t addr,uint8_t v);
@@ -36,12 +38,23 @@ void RC523Init(void)
     /// //test = ADC_GetConversionValue(ADC1);
     /// for(int i = 0 ; i < 1000 ; i ++);
     /// ReadCardId(idtest);
+	  
+	memset(regbuff, 0, sizeof(regbuff));
     
     for(int i = 0 ; i < 1000 ; i ++);
     RCRequestTypeB();
     RCATTRIBTypeB();
     RCGetUIDTypeB(regbuff);
     for(int i = 0 ; i < 16000 ; i ++);
+	  
+	  if(regbuff[0] != 0 && regbuff[1] != 0)
+	  {
+		  buzzer_flag = 1;
+	  }
+	  else
+	  {
+		  buzzer_flag = 0;
+	  }
   }
 }
 
